@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONMUSUBI アプリシリーズ - 桜餅カラーver.</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Noto Sans JP', sans-serif; }</style>
+</head>
+<body class="bg-rose-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+    <div id="authModal" class="fixed inset-0 bg-rose-50 z-[100] flex items-center justify-center p-4">
+        <div class="bg-white p-8 rounded-3xl shadow-xl w-full max-w-sm text-center">
+            <h2 class="text-xl font-bold text-rose-900 mb-4">ONMUSUBI 認証</h2>
+            <input type="password" id="passwordInput" class="w-full border-2 border-rose-100 rounded-xl p-3 mb-4 text-center tracking-widest" placeholder="パスワード">
+            <button onclick="checkPassword()" class="w-full bg-rose-600 text-white py-3 rounded-xl font-bold hover:bg-rose-700 transition-all">認証して開始</button>
+        </div>
+    </div>
+
+    <header class="bg-white/80 backdrop-blur-sm border-b border-rose-100 py-6 px-4 sm:px-6 sticky top-0 z-10 shadow-sm">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <h1 class="text-2xl font-bold text-rose-900">ONMUSUBI アプリシリーズ</h1>
+            <button onclick="document.getElementById('settingsModal').classList.remove('hidden')" class="text-2xl p-2 hover:bg-rose-100 rounded-full transition-colors">⚙️</button>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 py-10">
+        <div id="appGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </main>
+
+    <footer class="bg-white border-t border-rose-100 py-10 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h3 class="text-sm font-bold text-rose-900 mb-4">🔗 リンク集</h3>
+            <ul id="linkList" class="flex flex-wrap gap-4 text-sm text-emerald-800"></ul>
+        </div>
+        <div class="text-center mt-8 text-rose-800 text-xs font-medium">© ONMUSUBI App Series.</div>
+    </footer>
+
+    <div id="settingsModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white p-6 rounded-2xl w-full max-w-lg max-h-[80vh] overflow-y-auto">
+            <h2 class="text-xl font-bold mb-4">設定編集</h2>
+            <h3 class="font-bold text-sm mb-2">アプリ設定</h3>
+            <div id="settingsList" class="space-y-4"></div>
+            <h3 class="font-bold text-sm mt-6 mb-2">リンク集設定</h3>
+            <div id="linkSettingsList" class="space-y-2"></div>
+            <div class="grid grid-cols-2 gap-2 mt-6">
+                <button onclick="addApp()" class="bg-emerald-100 text-emerald-800 py-2 rounded-lg font-bold text-xs">+ アプリ追加</button>
+                <button onclick="addLink()" class="bg-emerald-100 text-emerald-800 py-2 rounded-lg font-bold text-xs">+ リンク追加</button>
+            </div>
+            <button onclick="resetToInitial()" class="w-full mt-2 bg-slate-100 text-slate-600 py-2 rounded-lg font-bold text-xs">初期状態にリセット</button>
+            <button onclick="saveAndClose()" class="w-full mt-4 bg-rose-600 text-white py-3 rounded-lg font-bold">保存して閉じる</button>
+        </div>
+    </div>
+
+    <script>
+        const initialApps = [
+            { id: 1, title: "連携観察アプリ", desc: "オンコール時も安心。記録をサポート。", appUrl: "https://tacchibanana.github.io/ONMUSUBI-JYOUTAI-KANSATU/", docUrl: "https://tacchibanana.github.io/RENKEIKANSATU-SETUMEI/", tag: "1. 連携・記録" },
+            { id: 2, title: "急変予兆キャッチャー", desc: "qSOFA-NEWS2を自動判定。", appUrl: "https://tacchibanana.github.io/DG-NEWS2-QSOFA/", docUrl: "https://tacchibanana.github.io/YOCHYOU-SETUMEI/", tag: "2. 急変対応" },
+            { id: 3, title: "急変時対応サポート", desc: "迅速な対応をナビゲートします。", appUrl: "https://tacchibanana.github.io/DG-TRIAGE-TOOL/", docUrl: "https://tacchibanana.github.io/TRIAGE-CHIRASHI/", tag: "3. 急変対応" },
+            { id: 4, title: "デジタル付箋アプリ", desc: "連携と抜け漏れ防止をサポート。", appUrl: "https://tacchibanana.github.io/ONMUSUBI-BOARD-002/", docUrl: "https://tacchibanana.github.io/DEJITARUFUSEN-SETUMEI/", tag: "4. 情報共有" },
+            { id: 5, title: "事故報告・分析支援", desc: "原因分析から再発防止策までを一元管理。", appUrl: "https://tacchibanana.github.io/JIKO-V2/", docUrl: "https://tacchibanana.github.io/Jikohoukoku-setumei/", tag: "5. リスク管理" },
+            { id: 6, title: "QRコールアプリ", desc: "QRコードからの簡単相談ツール。", appUrl: "https://tacchibanana.github.io/nurse-calljyusin/", docUrl: "https://tacchibanana.github.io/QRCALL-SETUMEI/", tag: "6. 連絡ツール" },
+            { id: 7, title: "病院収益見える化", desc: "病棟別BEPシミュレーター。", appUrl: "https://tacchibanana.github.io/hospital-support-tool-SONEKI/", docUrl: "https://tacchibanana.github.io/BYOUIN-SONEKI-serum/", tag: "7. 経営支援" },
+            { id: 8, title: "訪看収益シミュレーション", desc: "訪問回数や加算で収益試算。", appUrl: "https://tacchibanana.github.io/HOUMON-TANKA-SONEKI/", docUrl: "https://tacchibanana.github.io/HOUMONNKANGO-setumei/", tag: "8. 経営支援" },
+            { id: 9, title: "居宅収益シミュレーション", desc: "ケアプラン費用を自動計算。", appUrl: "https://tacchibanana.github.io/KEAMANE-support-SEIGEN/", docUrl: "https://tacchibanana.github.io/keamaneshien-setumei/", tag: "9. 経営支援" }
+        ];
+
+        let appData = JSON.parse(localStorage.getItem('onmusubi_apps')) || initialApps;
+        let linkData = JSON.parse(localStorage.getItem('onmusubi_links')) || [{ title: "ONMUSUBIホームページ", url: "https://tetsunabe.info/lp/" }];
+
+        function render() {
+            document.getElementById('appGrid').innerHTML = appData.map(app => `
+                <div class="bg-white border border-rose-100 rounded-2xl shadow-sm p-6 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-md">${app.tag}</span>
+                        <h2 class="text-lg font-bold text-rose-900 mt-3">${app.title}</h2>
+                        <p class="text-sm text-slate-600 mt-2">${app.desc}</p>
+                    </div>
+                    <div class="mt-6 space-y-3">
+                        <label class="flex items-center gap-2 text-xs text-rose-800 cursor-pointer">
+                            <input type="checkbox" onchange="toggleCheck(${app.id}, this.checked)" ${localStorage.getItem('confirm_'+app.id)==='true' ? 'checked' : ''}> 確認しました
+                        </label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <a href="${app.appUrl}" id="btn-${app.id}" target="_blank" class="text-center bg-emerald-700 text-white text-xs font-bold py-3 rounded-lg ${localStorage.getItem('confirm_'+app.id)==='true' ? '' : 'pointer-events-none opacity-40'}">🚀 アプリ</a>
+                            <a href="${app.docUrl}" target="_blank" class="text-center bg-rose-100 text-rose-900 text-xs font-bold py-3 rounded-lg">📄 資料</a>
+                        </div>
+                    </div>
+                </div>`).join('');
+            document.getElementById('linkList').innerHTML = linkData.map(link => `<li><a href="${link.url}" target="_blank" class="hover:underline">≫ ${link.title}</a></li>`).join('');
+        }
+
+        function renderSettings() {
+            document.getElementById('settingsList').innerHTML = appData.map(app => `
+                <div class="p-2 border rounded bg-slate-50 text-xs space-y-1">
+                    <input type="text" value="${app.title}" onchange="appData.find(a=>a.id==${app.id}).title=this.value" class="w-full font-bold bg-transparent border-b">
+                    <input type="text" value="${app.desc}" placeholder="紹介文" onchange="appData.find(a=>a.id==${app.id}).desc=this.value" class="w-full bg-white p-1 border">
+                    <input type="text" value="${app.appUrl}" placeholder="アプリURL" onchange="appData.find(a=>a.id==${app.id}).appUrl=this.value" class="w-full bg-white p-1 border">
+                </div>`).join('');
+            
+            document.getElementById('linkSettingsList').innerHTML = linkData.map((link, index) => `
+                <div class="p-2 border rounded bg-slate-50 text-xs space-y-1">
+                    <input type="text" value="${link.title}" placeholder="紹介テキスト" onchange="linkData[${index}].title=this.value" class="w-full font-bold bg-white p-1 border">
+                    <input type="text" value="${link.url}" placeholder="リンクURL" onchange="linkData[${index}].url=this.value" class="w-full bg-white p-1 border">
+                </div>`).join('');
+        }
+
+        function checkPassword() { if(document.getElementById('passwordInput').value === 'ONMUSUBI0088') { localStorage.setItem('auth_onmusubi', 'true'); document.getElementById('authModal').classList.add('hidden'); } else { alert('パスワードが違います'); } }
+        if (localStorage.getItem('auth_onmusubi') !== 'true') document.getElementById('authModal').classList.remove('hidden');
+        
+        function toggleCheck(id, checked) { localStorage.setItem('confirm_'+id, checked); render(); }
+        function addApp() { appData.push({ id: Date.now(), title: "新規", appUrl: "", docUrl: "", tag: "追加", desc: "" }); renderSettings(); }
+        function addLink() { linkData.push({ title: "新規リンク", url: "" }); renderSettings(); }
+        function resetToInitial() { if(confirm('リセットしますか？')) { appData = [...initialApps]; linkData = [{ title: "ONMUSUBIホームページ", url: "https://tetsunabe.info/lp/" }]; renderSettings(); } }
+        function saveAndClose() { localStorage.setItem('onmusubi_apps', JSON.stringify(appData)); localStorage.setItem('onmusubi_links', JSON.stringify(linkData)); document.getElementById('settingsModal').classList.add('hidden'); render(); }
+
+        render();
+        renderSettings();
+    </script>
+</body>
+</html>
