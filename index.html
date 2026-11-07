@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONMUSUBI アプリシリーズ - 桜餅カラーver.</title>
+    <title>ONMUSUBI 安全対策パッケージ | 介護・医療現場の「気づく・伝える・振り返る」を支えるアプリ</title>
+    <meta name="description" content="観察・急変の予兆・急変時の対応・事故報告をひとつながりで支える、介護施設・訪問看護・病棟向けの安全対策アプリパッケージ。研修と伴走支援つき。">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <style>body { font-family: 'Noto Sans JP', sans-serif; }</style>
@@ -18,19 +19,140 @@
         </div>
     </div>
 
-    <header class="bg-white/80 backdrop-blur-sm border-b border-rose-100 py-6 px-4 sm:px-6 sticky top-0 z-10 shadow-sm">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <h1 class="text-2xl font-bold text-rose-900">ONMUSUBI アプリシリーズ</h1>
-            <button onclick="document.getElementById('settingsModal').classList.remove('hidden')" class="text-2xl p-2 hover:bg-rose-100 rounded-full transition-colors">⚙️</button>
+    <header class="bg-white/80 backdrop-blur-sm border-b border-rose-100 py-4 px-4 sm:px-6 sticky top-0 z-10 shadow-sm">
+        <div class="max-w-6xl mx-auto flex items-center justify-between gap-4">
+            <div>
+                <p class="text-xs font-bold text-emerald-700 tracking-wider">ONMUSUBI App Series</p>
+                <h1 class="text-xl sm:text-2xl font-bold text-rose-900">安全対策パッケージ</h1>
+            </div>
+            <nav class="hidden md:flex items-center gap-5 text-sm font-medium text-rose-900">
+                <a href="#package" class="hover:underline">パッケージ</a>
+                <a href="#options" class="hover:underline">連携オプション</a>
+                <a href="#management" class="hover:underline">経営支援</a>
+                <a href="#plans" class="hover:underline">導入プラン</a>
+            </nav>
+            <button onclick="document.getElementById('settingsModal').classList.remove('hidden')" class="text-2xl p-2 hover:bg-rose-100 rounded-full transition-colors" aria-label="設定">⚙️</button>
         </div>
     </header>
 
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 py-10">
-        <div id="appGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <main class="flex-grow">
+        <!-- Hero -->
+        <section class="px-4 sm:px-6 pt-12 pb-10">
+            <div class="max-w-6xl mx-auto">
+                <p class="inline-block text-xs font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">介護施設・訪問看護・病棟向け</p>
+                <h2 class="text-3xl sm:text-4xl font-bold text-rose-900 mt-4 leading-snug">「なんか変」に気づき、迷わず伝え、<br class="hidden sm:block">事故を繰り返さない。</h2>
+                <p class="text-slate-600 mt-4 max-w-3xl leading-relaxed">観察、急変の予兆、急変時の対応、事故報告。現場の安全を支える4つのアプリを、ひとつながりの流れで使えるようにしました。入力は「選ぶだけ」。報告文や記録は自動で作成されるので、夜間のオンコールでも、経験の浅い職員でも、同じ質で動けます。</p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+                    <div class="bg-white rounded-2xl p-5 border border-rose-100">
+                        <p class="text-2xl">🧭</p>
+                        <p class="font-bold text-rose-900 mt-2">判断のばらつきを減らす</p>
+                        <p class="text-sm text-slate-600 mt-1">施設の報告基準・対応ルールをアプリに表示。誰が当番でも同じ基準で動けます。</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-rose-100">
+                        <p class="text-2xl">⏱️</p>
+                        <p class="font-bold text-rose-900 mt-2">記録・報告の時間を減らす</p>
+                        <p class="text-sm text-slate-600 mt-1">申し送り、SBAR・SOAP、5W1Hの事故報告をワンタップで作成。コピーしてそのまま記録へ。</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-5 border border-rose-100">
+                        <p class="text-2xl">🔁</p>
+                        <p class="font-bold text-rose-900 mt-2">事故を振り返り、繰り返さない</p>
+                        <p class="text-sm text-slate-600 mt-1">5Mの原因分析と再発防止策を記録。月次の傾向分析で委員会の議論にもつなげます。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Package -->
+        <section id="package" class="px-4 sm:px-6 py-10 bg-white border-y border-rose-100">
+            <div class="max-w-6xl mx-auto">
+                <p class="text-xs font-bold text-emerald-700 tracking-wider">SAFETY PACKAGE</p>
+                <h2 class="text-2xl font-bold text-rose-900 mt-1">安全対策パッケージ ─ 4つのステップ</h2>
+                <p class="text-sm text-slate-600 mt-2">日々の観察から事故後の振り返りまで、場面に合わせてアプリを使い分けます。</p>
+                <div id="packageGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"></div>
+            </div>
+        </section>
+
+        <!-- Options -->
+        <section id="options" class="px-4 sm:px-6 py-10">
+            <div class="max-w-6xl mx-auto">
+                <p class="text-xs font-bold text-emerald-700 tracking-wider">OPTIONS</p>
+                <h2 class="text-2xl font-bold text-rose-900 mt-1">連携オプション</h2>
+                <p class="text-sm text-slate-600 mt-2">チーム内の情報共有と、利用者・ご家族からの呼び出しをスムーズにします。パッケージと組み合わせてお使いいただけます。</p>
+                <div id="optionGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"></div>
+            </div>
+        </section>
+
+        <!-- Management -->
+        <section id="management" class="px-4 sm:px-6 py-10 bg-white border-y border-rose-100">
+            <div class="max-w-6xl mx-auto">
+                <p class="text-xs font-bold text-emerald-700 tracking-wider">MANAGEMENT</p>
+                <h2 class="text-2xl font-bold text-rose-900 mt-1">経営支援ツール</h2>
+                <p class="text-sm text-slate-600 mt-2">病院・訪問看護・居宅介護支援の収支を試算します。経営改善のご相談の入口としてご活用ください。</p>
+                <div id="managementGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8"></div>
+            </div>
+        </section>
+
+        <!-- Plans -->
+        <section id="plans" class="px-4 sm:px-6 py-12">
+            <div class="max-w-6xl mx-auto">
+                <p class="text-xs font-bold text-emerald-700 tracking-wider">PLANS</p>
+                <h2 class="text-2xl font-bold text-rose-900 mt-1">導入プラン</h2>
+                <p class="text-sm text-slate-600 mt-2">アプリだけでなく、施設の報告基準づくりや職員研修までご一緒します。料金は事業所の規模に合わせてご案内します。</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div class="bg-white rounded-2xl p-6 border border-rose-100 flex flex-col">
+                        <p class="text-sm font-bold text-emerald-700">ライト</p>
+                        <p class="text-lg font-bold text-rose-900 mt-1">まずはアプリから</p>
+                        <ul class="text-sm text-slate-600 mt-4 space-y-2 list-disc pl-5">
+                            <li>安全対策パッケージ4アプリの利用</li>
+                            <li>初期設定と使い方の説明</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border-2 border-rose-400 flex flex-col relative">
+                        <span class="absolute -top-3 left-6 text-xs font-bold bg-rose-600 text-white px-3 py-1 rounded-full">おすすめ</span>
+                        <p class="text-sm font-bold text-emerald-700">スタンダード</p>
+                        <p class="text-lg font-bold text-rose-900 mt-1">仕組みとして定着させる</p>
+                        <ul class="text-sm text-slate-600 mt-4 space-y-2 list-disc pl-5">
+                            <li>ライトの内容すべて</li>
+                            <li>施設の報告基準・対応ルールをアプリに設定</li>
+                            <li>職員研修（観察・急変時の報告）</li>
+                            <li>事故報告の月次分析レポート</li>
+                            <li>連携オプションの利用</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 border border-rose-100 flex flex-col">
+                        <p class="text-sm font-bold text-emerald-700">プレミアム</p>
+                        <p class="text-lg font-bold text-rose-900 mt-1">委員会運営まで伴走</p>
+                        <ul class="text-sm text-slate-600 mt-4 space-y-2 list-disc pl-5">
+                            <li>スタンダードの内容すべて</li>
+                            <li>月1回のオンライン伴走（安全対策・生産性向上の委員会）</li>
+                            <li>再発防止策の実行支援と効果の振り返り</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8 bg-emerald-50 border border-emerald-100 rounded-2xl p-6">
+                    <p class="font-bold text-emerald-900">導入の流れ</p>
+                    <ol class="grid grid-cols-1 sm:grid-cols-4 gap-4 mt-3 text-sm text-slate-700">
+                        <li><span class="font-bold text-rose-900">1. ご相談</span><br>現場の困りごとと、今の報告ルールをお聞きします。</li>
+                        <li><span class="font-bold text-rose-900">2. 無料体験</span><br>無料プランで現場の職員に使ってもらいます。</li>
+                        <li><span class="font-bold text-rose-900">3. 設定・研修</span><br>報告基準を設定し、職員研修を行います。</li>
+                        <li><span class="font-bold text-rose-900">4. 振り返り</span><br>事故の傾向を分析し、次の対策を一緒に決めます。</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section class="px-4 sm:px-6 pb-12">
+            <div class="max-w-6xl mx-auto">
+                <div class="bg-white border border-amber-200 rounded-2xl p-5 text-xs text-slate-600 leading-relaxed">
+                    <p class="font-bold text-amber-800 mb-1">ご利用にあたって</p>
+                    本パッケージのアプリは、観察・報告・記録を補助するツールであり、医療機器・診断プログラムではありません。スコアや緊急度は施設で定めた報告基準・対応ルールを表示するための目安です。最終的な判断は、必ず医師・看護師および所属施設のプロトコルに従ってください。利用者の個人情報の取り扱いは、各施設のルールに従ってください。
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="bg-white border-t border-rose-100 py-10 px-6">
-        <div class="max-w-7xl mx-auto">
+        <div class="max-w-6xl mx-auto">
             <h3 class="text-sm font-bold text-rose-900 mb-4">🔗 リンク集</h3>
             <ul id="linkList" class="flex flex-wrap gap-4 text-sm text-emerald-800"></ul>
         </div>
@@ -54,65 +176,134 @@
     </div>
 
     <script>
+        // category: package（安全対策パッケージ）/ option（連携オプション）/ management（経営支援）
         const initialApps = [
-            { id: 1, title: "連携観察アプリ", desc: "オンコール時も安心。記録をサポート。", appUrl: "https://tacchibanana.github.io/ONMUSUBI-JYOUTAI-KANSATU/", docUrl: "https://tacchibanana.github.io/RENKEIKANSATU-SETUMEI/", tag: "1. 連携・記録" },
-            { id: 2, title: "急変予兆キャッチャー", desc: "qSOFA-NEWS2結果を元に現場の対応ルールを表示する機能", appUrl: "https://tacchibanana.github.io/DG-NEWS2-QSOFA/", docUrl: "https://tacchibanana.github.io/YOCHYOU-SETUMEI/", tag: "2. 急変対応" },
-            { id: 3, title: "急変時対応サポート", desc: "迅速な対応をナビゲートします。", appUrl: "https://tacchibanana.github.io/DG-TRIAGE-TOOL/", docUrl: "https://tacchibanana.github.io/TRIAGE-CHIRASHI/", tag: "3. 急変対応" },
-            { id: 4, title: "デジタル付箋アプリ", desc: "連携と抜け漏れ防止をサポート。", appUrl: "https://tacchibanana.github.io/ONMUSUBI-BOARD-002/", docUrl: "https://tacchibanana.github.io/DEJITARUFUSEN-SETUMEI/", tag: "4. 情報共有" },
-            { id: 5, title: "事故報告・分析支援", desc: "原因分析から再発防止策までを一元管理。", appUrl: "https://tacchibanana.github.io/JIKO-V2/", docUrl: "https://tacchibanana.github.io/Jikohoukoku-setumei/", tag: "5. リスク管理" },
-            { id: 6, title: "QRコールアプリ", desc: "QRコードからの簡単相談ツール。", appUrl: "https://tacchibanana.github.io/nurse-calljyusin/", docUrl: "https://tacchibanana.github.io/QRCALL-SETUMEI/", tag: "6. 連絡ツール" },
-            { id: 7, title: "病院収益見える化", desc: "病棟別BEPシミュレーター。", appUrl: "https://tacchibanana.github.io/hospital-support-tool-SONEKI/", docUrl: "https://tacchibanana.github.io/BYOUIN-SONEKI-serum/", tag: "7. 経営支援" },
-            { id: 8, title: "訪看収益シミュレーション", desc: "訪問回数や加算で収益試算。", appUrl: "https://tacchibanana.github.io/HOUMON-TANKA-SONEKI/", docUrl: "https://tacchibanana.github.io/HOUMONNKANGO-setumei/", tag: "8. 経営支援" },
-            { id: 9, title: "居宅収益シミュレーション", desc: "ケアプラン費用を自動計算。", appUrl: "https://tacchibanana.github.io/KEAMANE-support-SEIGEN/", docUrl: "https://tacchibanana.github.io/keamaneshien-setumei/", tag: "9. 経営支援" }
+            { id: 1, category: "package", step: "STEP 1　日々の観察", title: "連携観察アプリ",
+              desc: "見て・選んで・送るだけ。観察チェックから申し送り・報告記録を自動で作成します。",
+              scene: "日々の状態観察、夜間オンコール前の状態確認、事故直後の初期記録",
+              features: ["バイタル・意識・症状・摂取/排泄・事故/外傷をタップで網羅", "申し送り・報告記録を自動作成し、コピーや印刷で記録へ", "観察項目がそろうので、新人の観察教育にも使える"],
+              appUrl: "https://tacchibanana.github.io/ONMUSUBI-JYOUTAI-KANSATU/", docUrl: "https://tacchibanana.github.io/RENKEIKANSATU-SETUMEI/" },
+            { id: 2, category: "package", step: "STEP 2　急変の予兆", title: "急変予兆キャッチャー",
+              desc: "qSOFA-NEWS2結果を元に現場の対応ルールを表示する機能。医師・看護師への報告文もその場で作成します。",
+              scene: "「なんか変」と感じたとき、夜間に一人で判断を迫られたとき",
+              features: ["バイタル入力でqSOFA・NEWS2のスコアを計算", "スコアに応じて施設の報告基準・対応ルールを表示", "SBAR報告文とSOAP記録を自動作成"],
+              appUrl: "https://tacchibanana.github.io/DG-NEWS2-QSOFA/", docUrl: "https://tacchibanana.github.io/YOCHYOU-SETUMEI/" },
+            { id: 3, category: "package", step: "STEP 3　急変時の対応", title: "急変時対応サポート",
+              desc: "症状とバイタルから緊急度の目安を示し、施設で決めた対応手順と連絡先を表示します。",
+              scene: "急変・救急受診の判断に迷うとき、オンコールの看護師へ連絡するとき",
+              features: ["症状をタップしてバイタルを入れるだけで緊急度の目安を表示", "緊急度ごとに施設の取り決めメモ・連絡先を表示", "SOAP形式の報告記録を自動作成"],
+              appUrl: "https://tacchibanana.github.io/DG-TRIAGE-TOOL/", docUrl: "https://tacchibanana.github.io/TRIAGE-CHIRASHI/" },
+            { id: 5, category: "package", step: "STEP 4　事故の振り返り", title: "事故報告・分析支援",
+              desc: "その場でスマホから事故報告。5Mの原因分析と再発防止策まで、一つの流れで記録します。",
+              scene: "転倒・転落・誤薬などの事故やヒヤリハットが起きたとき、委員会で振り返るとき",
+              features: ["影響レベル（ヒヤリハット〜レベル5）を選んで報告", "5M（利用者・職員・環境・手順・管理）で原因を整理", "5W1H記録を自動作成し、A4印刷・PDF保存に対応"],
+              appUrl: "https://tacchibanana.github.io/JIKO-V2/", docUrl: "https://tacchibanana.github.io/Jikohoukoku-setumei/" },
+            { id: 4, category: "option", step: "情報共有", title: "デジタル付箋アプリ",
+              desc: "部署や宛先を指定して、申し送りや「あとで確認」を写真つきの付箋で共有。チームの抜け漏れを防ぎます。",
+              scene: "勤務交代の申し送り、職種間の連絡",
+              features: [], appUrl: "https://tacchibanana.github.io/ONMUSUBI-BOARD-002/", docUrl: "https://tacchibanana.github.io/DEJITARUFUSEN-SETUMEI/" },
+            { id: 6, category: "option", step: "相談・連絡", title: "QRコールアプリ",
+              desc: "居室などに貼ったQRコードを読み取るだけで、利用者やご家族がスマホからスタッフを呼べます。「すぐ来て」と「相談」は音で区別できます。",
+              scene: "ナースコールのない場所での呼び出し、急がない相談",
+              features: [], appUrl: "https://tacchibanana.github.io/nurse-calljyusin/", docUrl: "https://tacchibanana.github.io/QRCALL-SETUMEI/" },
+            { id: 7, category: "management", step: "病院向け", title: "病院収益見える化",
+              desc: "病棟別の損益分岐点（BEP）をシミュレーションし、病棟運営の判断材料にします。",
+              scene: "", features: [], appUrl: "https://tacchibanana.github.io/hospital-support-tool-SONEKI/", docUrl: "https://tacchibanana.github.io/BYOUIN-SONEKI-serum/" },
+            { id: 8, category: "management", step: "訪問看護向け", title: "訪看収益シミュレーション",
+              desc: "訪問回数や加算の組み合わせから、訪問看護ステーションの収益を試算します。",
+              scene: "", features: [], appUrl: "https://tacchibanana.github.io/HOUMON-TANKA-SONEKI/", docUrl: "https://tacchibanana.github.io/HOUMONNKANGO-setumei/" },
+            { id: 9, category: "management", step: "居宅介護支援向け", title: "居宅収益シミュレーション",
+              desc: "担当件数や加算からケアプラン費用を計算し、居宅介護支援事業所の収益を試算します。",
+              scene: "", features: [], appUrl: "https://tacchibanana.github.io/KEAMANE-support-SEIGEN/", docUrl: "https://tacchibanana.github.io/keamaneshien-setumei/" }
         ];
+        const initialLinks = [{ title: "ONMUSUBIホームページ", url: "https://tetsunabe.info/lp/" }];
 
-        let appData = JSON.parse(localStorage.getItem('onmusubi_apps')) || initialApps;
-        let linkData = JSON.parse(localStorage.getItem('onmusubi_links')) || [{ title: "ONMUSUBIホームページ", url: "https://tetsunabe.info/lp/" }];
+        // v2: 安全対策パッケージ版。旧バージョンで保存した内容（onmusubi_apps）は読み込まない
+        const APPS_KEY = 'onmusubi_apps_v2';
+        let appData = JSON.parse(localStorage.getItem(APPS_KEY)) || structuredClone(initialApps);
+        let linkData = JSON.parse(localStorage.getItem('onmusubi_links')) || structuredClone(initialLinks);
 
-        function render() {
-            document.getElementById('appGrid').innerHTML = appData.map(app => `
+        const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+        const isConfirmed = id => localStorage.getItem('confirm_' + id) === 'true';
+
+        function buttons(app) {
+            return `
+                <div class="mt-5 space-y-3">
+                    <label class="flex items-center gap-2 text-xs text-rose-800 cursor-pointer">
+                        <input type="checkbox" onchange="toggleCheck(${app.id}, this.checked)" ${isConfirmed(app.id) ? 'checked' : ''}> 資料と「ご利用にあたって」を確認しました
+                    </label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="${esc(app.appUrl)}" target="_blank" rel="noopener" class="text-center bg-emerald-700 text-white text-xs font-bold py-3 rounded-lg ${isConfirmed(app.id) ? '' : 'pointer-events-none opacity-40'}">🚀 アプリを開く</a>
+                        <a href="${esc(app.docUrl)}" target="_blank" rel="noopener" class="text-center bg-rose-100 text-rose-900 text-xs font-bold py-3 rounded-lg">📄 資料を見る</a>
+                    </div>
+                </div>`;
+        }
+
+        function packageCard(app) {
+            const feats = (app.features || []).map(f => `<li>${esc(f)}</li>`).join('');
+            return `
+                <div class="bg-rose-50/60 border border-rose-100 rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-md">${esc(app.step)}</span>
+                        <h3 class="text-lg font-bold text-rose-900 mt-3">${esc(app.title)}</h3>
+                        <p class="text-sm text-slate-700 mt-2">${esc(app.desc)}</p>
+                        ${app.scene ? `<p class="text-xs text-slate-500 mt-3"><span class="font-bold text-rose-800">使う場面：</span>${esc(app.scene)}</p>` : ''}
+                        ${feats ? `<ul class="text-sm text-slate-600 mt-3 space-y-1 list-disc pl-5">${feats}</ul>` : ''}
+                    </div>
+                    ${buttons(app)}
+                </div>`;
+        }
+
+        function simpleCard(app) {
+            return `
                 <div class="bg-white border border-rose-100 rounded-2xl shadow-sm p-6 flex flex-col justify-between">
                     <div>
-                        <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-md">${app.tag}</span>
-                        <h2 class="text-lg font-bold text-rose-900 mt-3">${app.title}</h2>
-                        <p class="text-sm text-slate-600 mt-2">${app.desc}</p>
+                        <span class="text-xs font-bold bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-md">${esc(app.step)}</span>
+                        <h3 class="text-lg font-bold text-rose-900 mt-3">${esc(app.title)}</h3>
+                        <p class="text-sm text-slate-600 mt-2">${esc(app.desc)}</p>
+                        ${app.scene ? `<p class="text-xs text-slate-500 mt-3"><span class="font-bold text-rose-800">使う場面：</span>${esc(app.scene)}</p>` : ''}
                     </div>
-                    <div class="mt-6 space-y-3">
-                        <label class="flex items-center gap-2 text-xs text-rose-800 cursor-pointer">
-                            <input type="checkbox" onchange="toggleCheck(${app.id}, this.checked)" ${localStorage.getItem('confirm_'+app.id)==='true' ? 'checked' : ''}> 確認しました
-                        </label>
-                        <div class="grid grid-cols-2 gap-3">
-                            <a href="${app.appUrl}" id="btn-${app.id}" target="_blank" class="text-center bg-emerald-700 text-white text-xs font-bold py-3 rounded-lg ${localStorage.getItem('confirm_'+app.id)==='true' ? '' : 'pointer-events-none opacity-40'}">🚀 アプリ</a>
-                            <a href="${app.docUrl}" target="_blank" class="text-center bg-rose-100 text-rose-900 text-xs font-bold py-3 rounded-lg">📄 資料</a>
-                        </div>
-                    </div>
-                </div>`).join('');
-            document.getElementById('linkList').innerHTML = linkData.map(link => `<li><a href="${link.url}" target="_blank" class="hover:underline">≫ ${link.title}</a></li>`).join('');
+                    ${buttons(app)}
+                </div>`;
+        }
+
+        function render() {
+            const by = cat => appData.filter(a => (a.category || 'option') === cat);
+            document.getElementById('packageGrid').innerHTML = by('package').map(packageCard).join('');
+            document.getElementById('optionGrid').innerHTML = by('option').map(simpleCard).join('');
+            document.getElementById('managementGrid').innerHTML = by('management').map(simpleCard).join('');
+            document.getElementById('linkList').innerHTML = linkData.map(link => `<li><a href="${esc(link.url)}" target="_blank" rel="noopener" class="hover:underline">≫ ${esc(link.title)}</a></li>`).join('');
         }
 
         function renderSettings() {
+            const catOptions = [['package', '安全対策パッケージ'], ['option', '連携オプション'], ['management', '経営支援']];
             document.getElementById('settingsList').innerHTML = appData.map(app => `
                 <div class="p-2 border rounded bg-slate-50 text-xs space-y-1">
-                    <input type="text" value="${app.title}" onchange="appData.find(a=>a.id==${app.id}).title=this.value" class="w-full font-bold bg-transparent border-b">
-                    <input type="text" value="${app.desc}" placeholder="紹介文" onchange="appData.find(a=>a.id==${app.id}).desc=this.value" class="w-full bg-white p-1 border">
-                    <input type="text" value="${app.appUrl}" placeholder="アプリURL" onchange="appData.find(a=>a.id==${app.id}).appUrl=this.value" class="w-full bg-white p-1 border">
+                    <input type="text" value="${esc(app.title)}" onchange="appData.find(a=>a.id==${app.id}).title=this.value" class="w-full font-bold bg-transparent border-b">
+                    <select onchange="appData.find(a=>a.id==${app.id}).category=this.value" class="w-full bg-white p-1 border">
+                        ${catOptions.map(([v, l]) => `<option value="${v}" ${(app.category || 'option') === v ? 'selected' : ''}>${l}</option>`).join('')}
+                    </select>
+                    <input type="text" value="${esc(app.step)}" placeholder="ラベル（例：STEP 1　日々の観察）" onchange="appData.find(a=>a.id==${app.id}).step=this.value" class="w-full bg-white p-1 border">
+                    <textarea placeholder="紹介文" onchange="appData.find(a=>a.id==${app.id}).desc=this.value" class="w-full bg-white p-1 border" rows="2">${esc(app.desc)}</textarea>
+                    <input type="text" value="${esc(app.appUrl)}" placeholder="アプリURL" onchange="appData.find(a=>a.id==${app.id}).appUrl=this.value" class="w-full bg-white p-1 border">
+                    <input type="text" value="${esc(app.docUrl)}" placeholder="資料URL" onchange="appData.find(a=>a.id==${app.id}).docUrl=this.value" class="w-full bg-white p-1 border">
                 </div>`).join('');
-            
+
             document.getElementById('linkSettingsList').innerHTML = linkData.map((link, index) => `
                 <div class="p-2 border rounded bg-slate-50 text-xs space-y-1">
-                    <input type="text" value="${link.title}" placeholder="紹介テキスト" onchange="linkData[${index}].title=this.value" class="w-full font-bold bg-white p-1 border">
-                    <input type="text" value="${link.url}" placeholder="リンクURL" onchange="linkData[${index}].url=this.value" class="w-full bg-white p-1 border">
+                    <input type="text" value="${esc(link.title)}" placeholder="紹介テキスト" onchange="linkData[${index}].title=this.value" class="w-full font-bold bg-white p-1 border">
+                    <input type="text" value="${esc(link.url)}" placeholder="リンクURL" onchange="linkData[${index}].url=this.value" class="w-full bg-white p-1 border">
                 </div>`).join('');
         }
 
         function checkPassword() { if(document.getElementById('passwordInput').value === 'ONMUSUBI0088') { localStorage.setItem('auth_onmusubi', 'true'); document.getElementById('authModal').classList.add('hidden'); } else { alert('パスワードが違います'); } }
         if (localStorage.getItem('auth_onmusubi') !== 'true') document.getElementById('authModal').classList.remove('hidden');
-        
-        function toggleCheck(id, checked) { localStorage.setItem('confirm_'+id, checked); render(); }
-        function addApp() { appData.push({ id: Date.now(), title: "新規", appUrl: "", docUrl: "", tag: "追加", desc: "" }); renderSettings(); }
+
+        function toggleCheck(id, checked) { localStorage.setItem('confirm_' + id, checked); render(); }
+        function addApp() { appData.push({ id: Date.now(), category: "option", step: "追加", title: "新規", desc: "", scene: "", features: [], appUrl: "", docUrl: "" }); renderSettings(); }
         function addLink() { linkData.push({ title: "新規リンク", url: "" }); renderSettings(); }
-        function resetToInitial() { if(confirm('リセットしますか？')) { appData = [...initialApps]; linkData = [{ title: "ONMUSUBIホームページ", url: "https://tetsunabe.info/lp/" }]; renderSettings(); } }
-        function saveAndClose() { localStorage.setItem('onmusubi_apps', JSON.stringify(appData)); localStorage.setItem('onmusubi_links', JSON.stringify(linkData)); document.getElementById('settingsModal').classList.add('hidden'); render(); }
+        function resetToInitial() { if (confirm('リセットしますか？')) { appData = structuredClone(initialApps); linkData = structuredClone(initialLinks); renderSettings(); } }
+        function saveAndClose() { localStorage.setItem(APPS_KEY, JSON.stringify(appData)); localStorage.setItem('onmusubi_links', JSON.stringify(linkData)); document.getElementById('settingsModal').classList.add('hidden'); render(); }
 
         render();
         renderSettings();
